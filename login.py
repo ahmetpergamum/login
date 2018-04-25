@@ -1,10 +1,17 @@
 #!/usr/bin/env python
 import requests
 import warnings
+import getpass
+from random import randint
 
+username=raw_input("username:")
+password=getpass.getpass("password:")
+address=raw_input("adress:")
 
-payload = {"mode": "191", "username": "aaaa", "password": "aaa", "a": "1524643588998"}
-url = "https://ip:port/login.xml"
+a=1524640000000+randint(3000000,9999999)
+
+payload = {"mode": "191", "username": username, "password": password, "a": a}
+url = "https://" + address + "/login.xml"
 s = requests.session()
 warnings.filterwarnings("ignore")
 try:

@@ -1,15 +1,20 @@
 #!/usr/bin/env python
 import requests
-from lxml import html
+import warnings
+from random import randint
 
 
-payload = {"mode": "193", "username": "aaaa", "a": "1524643588998", "producttype": "0"}
-url = "https://ip:port/logout.xml"
+username=input("username:")
+address=input("adress:")
+a=1524640000000+randint(3000000,9999999)
+
+payload = {"mode": "193", "username": username, "a": a, "producttype": "0"}
+url = "https://" + address + "/logout.xml"
 s = requests.session()
+warnings.filterwarnings("ignore")
 try:
     r=s.post(url, data=payload, verify=False)
 
-#     r = s.get('http://detectportal.firefox.com/success.txt')
     r.raise_for_status()
 
 except Exception as exc:
